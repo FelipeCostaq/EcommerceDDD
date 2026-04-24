@@ -1,0 +1,17 @@
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\bin\Debug\net10.0\ApplicationApp.deps.json
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\bin\Debug\net10.0\ApplicationApp.dll
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\bin\Debug\net10.0\ApplicationApp.pdb
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\bin\Debug\net10.0\Domain.dll
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\bin\Debug\net10.0\Entities.dll
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\bin\Debug\net10.0\Domain.pdb
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\bin\Debug\net10.0\Entities.pdb
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\obj\Debug\net10.0\ApplicationApp.csproj.AssemblyReference.cache
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\obj\Debug\net10.0\ApplicationApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\obj\Debug\net10.0\ApplicationApp.AssemblyInfoInputs.cache
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\obj\Debug\net10.0\ApplicationApp.AssemblyInfo.cs
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\obj\Debug\net10.0\ApplicationApp.csproj.CoreCompileInputs.cache
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\obj\Debug\net10.0\Applicat.6086FC76.Up2Date
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\obj\Debug\net10.0\ApplicationApp.dll
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\obj\Debug\net10.0\refint\ApplicationApp.dll
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\obj\Debug\net10.0\ApplicationApp.pdb
+C:\Users\Timeware\Documents\Projects\EcommerceDDD\ApplicationApp\obj\Debug\net10.0\ref\ApplicationApp.dll
