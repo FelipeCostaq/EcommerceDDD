@@ -1,1 +1,22 @@
+## Visual Studio e .NET Build Outputs
+[Bb]in/
+[Oo]bj/
+
+## Pacotes NuGet
+*.nuget.props
+*.nuget.targets
+project.assets.json
+project.nuget.cache
+
+## Rider/VS Code/Visual Studio
+.idea/
+.vscode/
 .vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Publicação e arquivos temporários
+publish/
+*.log
