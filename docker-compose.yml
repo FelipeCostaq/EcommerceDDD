@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_server_container
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Ecommerce_Admin_2026#
+    ports:
+      - "1433:1433"
+
+  api:
+    build:
+      context: ./
+      dockerfile: ./Web_Ecommerce/Dockerfile
+    container_name: dotnet_api_container
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db;Database=Ecommerce;User Id=sa;Password=Ecommerce_Admin_2026#;TrustServerCertificate=True
+    depends_on:
+      - db

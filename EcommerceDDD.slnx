@@ -1,17 +1,17 @@
 <Solution>
-  <Folder Name="/1 - Presentation/">
-    <Project Path="Web_Ecommerce/Web_Ecommerce.csproj" />
-  </Folder>
-  <Folder Name="/2 - Application/">
+  <Folder Name="/Application/">
     <Project Path="ApplicationApp/ApplicationApp.csproj" />
   </Folder>
-  <Folder Name="/3 - Domain/">
+  <Folder Name="/Domain/">
     <Project Path="Domain/Domain.csproj" />
   </Folder>
-  <Folder Name="/4 - Infra/">
+  <Folder Name="/Entities/">
+    <Project Path="Entities/Entities.csproj" />
+  </Folder>
+  <Folder Name="/Infra/">
     <Project Path="Infrastructure/Infrastructure.csproj" />
   </Folder>
-  <Folder Name="/5 - Entities/">
-    <Project Path="Entities/Entities.csproj" />
+  <Folder Name="/Presentation/">
+    <Project Path="Web_Ecommerce/Web_Ecommerce.csproj" />
   </Folder>
 </Solution>

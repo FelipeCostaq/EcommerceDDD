@@ -59,4 +59,23 @@ app.MapControllerRoute(
 app.MapRazorPages()
    .WithStaticAssets();
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<ContextBase>();
+        
+        context.Database.EnsureCreated(); 
+        
+        context.Database.Migrate();
+        
+        Console.WriteLine("Banco de dados verificado/criado com sucesso!");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Erro ao inicializar banco: {ex.Message}");
+    }
+}
+
 app.Run();
