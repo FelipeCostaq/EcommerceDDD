@@ -8,27 +8,27 @@ using Entities.Entities;
 using Infrastructure.Configuration;
 using Infrastructure.Repository.Generics;
 using Infrastructure.Repository.Repositories;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Web_Ecommerce.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+const string connectionStringName = "FelipeConnection";
+
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString(connectionStringName) ?? throw new InvalidOperationException($"Connection string {connectionStringName} not found.");
 builder.Services.AddDbContext<ContextBase>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ContextBase>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 builder.Services.AddSingleton(typeof(IGenerics<>), typeof(RepositoryGenerics<>));
-builder.Services.AddSingleton<IProduct, RepositoryProduct>();   
-builder.Services.AddSingleton<InterfaceProductApp, AppProduct>();
-builder.Services.AddSingleton<IServiceProduct, ServiceProduct>();
+builder.Services.AddScoped<IProduct, RepositoryProduct>();   
+builder.Services.AddScoped<InterfaceProductApp, AppProduct>();
+builder.Services.AddScoped<IServiceProduct, ServiceProduct>();
 
 var app = builder.Build();
 
@@ -65,8 +65,6 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<ContextBase>();
-        
-        context.Database.EnsureCreated(); 
         
         context.Database.Migrate();
         

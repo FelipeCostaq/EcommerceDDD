@@ -42,7 +42,7 @@ namespace Infrastructure.Configuration
 
         private string GetStringConnectionConfig()
         {
-            string strCon = "Server=(localdb)\\mssqllocaldb;Database=Ecommerce;Trusted_Connection=True;MultipleActiveResultSets=true";
+            string strCon = "Server=localhost\\SQLEXPRESS;Database=Web_Ecommerce;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True";
             return strCon;
         }
     }
