@@ -1,6 +1,7 @@
 using ApplicationApp.Interfaces;
 using ApplicationApp.OpenApp;
 using Domain.Interfaces.Generics;
+using Domain.Interfaces.InterfaceCompraUsuario;
 using Domain.Interfaces.InterfaceProduct;
 using Domain.Interfaces.InterfaceServices;
 using Domain.Services;
@@ -36,7 +37,9 @@ builder.Services.AddRazorPages();
 builder.Services.AddSingleton(typeof(IGenerics<>), typeof(RepositoryGenerics<>));
 builder.Services.AddScoped<IProduct, RepositoryProduct>();   
 builder.Services.AddScoped<InterfaceProductApp, AppProduct>();
+builder.Services.AddSingleton<InterfaceCompraUsuarioApp, AppCompraUsuario>();
 builder.Services.AddScoped<IServiceProduct, ServiceProduct>();
+builder.Services.AddSingleton<ICompraUsuario, RepositoryCompraUsuario>();
 
 var app = builder.Build();
 
