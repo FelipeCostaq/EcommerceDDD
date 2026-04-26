@@ -197,10 +197,10 @@ namespace Infrastructure.Migrations
                 name: "TB_COMPRA_USUARIO",
                 columns: table => new
                 {
-                    IdProduto = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CUS_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    IdProduto = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProdutoId = table.Column<int>(type: "int", nullable: true),
                     CUS_ESTADO = table.Column<int>(type: "int", nullable: false),
                     CSU_QTD = table.Column<int>(type: "int", nullable: false)

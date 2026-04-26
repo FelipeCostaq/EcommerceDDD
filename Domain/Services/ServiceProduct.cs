@@ -3,6 +3,7 @@ using Domain.Interfaces.InterfaceServices;
 using Entities.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Domain.Services
@@ -45,6 +46,11 @@ namespace Domain.Services
                 
                 await _IProduct.Update(produto);
             }
+        }
+
+        public async Task<List<Produto>> ListarProdutosComEstoque()
+        {
+            return await _IProduct.ListarProdutos(p => p.QtdEstoque > 0);
         }
     }
 }

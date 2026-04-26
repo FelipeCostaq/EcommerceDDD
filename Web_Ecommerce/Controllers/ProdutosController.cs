@@ -65,8 +65,9 @@ namespace Web_Ecommerce.Controllers
                 }
 
             }
-            catch
+            catch(Exception ex)
             {
+                ModelState.AddModelError("", "Erro interno: " + ex.Message);
                 return View("Create", produto);
             }
 
@@ -86,7 +87,7 @@ namespace Web_Ecommerce.Controllers
         {
             try
             {
-                _InterfaceProductApp.UpdateProduct(produto);
+                await _InterfaceProductApp.UpdateProduct(produto);
 
                 if (produto.Notitycoes.Any())
                 {
@@ -137,6 +138,19 @@ namespace Web_Ecommerce.Controllers
             var user = await _userManager.GetUserAsync(User);
             
             return user.Id;
+        }
+        
+        [AllowAnonymous]
+        [HttpGet("/api/ListarProdutosComEstoque")]
+        public async Task<JsonResult> ListarProdutosComEstoque()
+        {
+            return Json(await _InterfaceProductApp.ListarProdutosComEstoque());
+        }
+
+        [HttpPost("/api/AdicionarProdutoCarrinho")]
+        public async Task AdicionarProdutoCarrinho(string id, string nome, string qtd)
+        {
+                
         }
     }
 }

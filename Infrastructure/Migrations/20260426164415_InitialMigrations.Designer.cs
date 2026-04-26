@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ContextBase))]
-    [Migration("20260425234850_InitialMigrations")]
+    [Migration("20260426164415_InitialMigrations")]
     partial class InitialMigrations
     {
         /// <inheritdoc />
@@ -30,7 +30,8 @@ namespace Infrastructure.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("CUS_ID");
+                        .HasColumnName("CUS_ID")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -52,7 +53,7 @@ namespace Infrastructure.Migrations
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)")
-                        .HasColumnOrder(1);
+                        .HasColumnOrder(2);
 
                     b.HasKey("Id");
 

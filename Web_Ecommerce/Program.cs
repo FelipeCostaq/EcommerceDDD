@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
-const string connectionStringName = "DockerConnection";
+const string connectionStringName = "FelipeConnection";
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString(connectionStringName) ?? throw new InvalidOperationException($"Connection string {connectionStringName} not found.");

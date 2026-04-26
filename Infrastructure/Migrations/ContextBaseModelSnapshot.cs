@@ -27,7 +27,8 @@ namespace Infrastructure.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("CUS_ID");
+                        .HasColumnName("CUS_ID")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -49,7 +50,7 @@ namespace Infrastructure.Migrations
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)")
-                        .HasColumnOrder(1);
+                        .HasColumnOrder(2);
 
                     b.HasKey("Id");
 

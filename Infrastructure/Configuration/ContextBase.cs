@@ -43,7 +43,7 @@ namespace Infrastructure.Configuration
 
         private string GetStringConnectionConfig()
         {
-            string strCon = "Server=db;Database=Ecommerce;User Id=sa;Password=Ecommerce_Admin_2026#;TrustServerCertificate=True";
+            string strCon = "Server=localhost\\SQLEXPRESS;Database=Web_Ecommerce;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True";
             return strCon;
         }
     }
