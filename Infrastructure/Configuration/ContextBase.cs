@@ -40,10 +40,11 @@ namespace Infrastructure.Configuration
                 
             base.OnModelCreating(builder);
         }
-
+        
         private string GetStringConnectionConfig()
         {
-            string strCon = "Server=localhost\\SQLEXPRESS;Database=Web_Ecommerce;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True";
+            
+            string strCon = "Server=(localdb)\\mssqllocaldb;Database=Web_Ecommerce;Trusted_Connection=True;MultipleActiveResultSets=true";
             return strCon;
         }
     }

@@ -55,5 +55,11 @@ namespace Entities.Entities
         [Column("PRD_DATA_ALTERECAO")]
         [Display(Name = "Data de Alteração")]
         public DateTime DataAlteração { get; set; }
+        
+        [NotMapped]
+        public int IdProdutoCarrinho { get; set; }
+        
+        [NotMapped]
+        public int QtdCompra { get; set; }
     }
 }

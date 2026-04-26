@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
-const string connectionStringName = "FelipeConnection";
+const string connectionStringName = "TimewareConnection";
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString(connectionStringName) ?? throw new InvalidOperationException($"Connection string {connectionStringName} not found.");
@@ -37,9 +37,9 @@ builder.Services.AddRazorPages();
 builder.Services.AddSingleton(typeof(IGenerics<>), typeof(RepositoryGenerics<>));
 builder.Services.AddScoped<IProduct, RepositoryProduct>();   
 builder.Services.AddScoped<InterfaceProductApp, AppProduct>();
-builder.Services.AddSingleton<InterfaceCompraUsuarioApp, AppCompraUsuario>();
+builder.Services.AddScoped<InterfaceCompraUsuarioApp, AppCompraUsuario>();
 builder.Services.AddScoped<IServiceProduct, ServiceProduct>();
-builder.Services.AddSingleton<ICompraUsuario, RepositoryCompraUsuario>();
+builder.Services.AddScoped<ICompraUsuario, RepositoryCompraUsuario>();
 
 var app = builder.Build();
 

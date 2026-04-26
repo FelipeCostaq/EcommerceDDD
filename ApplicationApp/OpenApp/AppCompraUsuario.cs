@@ -13,7 +13,6 @@ public class AppCompraUsuario : InterfaceCompraUsuarioApp
         _ICompraUsuario = ICompraUsuario;
     }
     
-    
     public async Task Add(CompraUsuario Objeto)
     {
         await _ICompraUsuario.Add(Objeto);
@@ -37,5 +36,10 @@ public class AppCompraUsuario : InterfaceCompraUsuarioApp
     public async Task<List<CompraUsuario>> List()
     {
         return await _ICompraUsuario.List();
+    }
+
+    public async Task<int> QuantidadeProdutoCarrinhoUsuario(string userId)
+    {
+       return await _ICompraUsuario.QuantidadeProdutoCarrinhoUsuario(userId);
     }
 }
