@@ -174,8 +174,8 @@ namespace Infrastructure.Migrations
                     PRD_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PRD_NOME = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    PRD_DESCRICAO = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    PRD_OBSERVACAO = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: false),
+                    PRD_DESCRICAO = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    PRD_OBSERVACAO = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: true),
                     PRD_VALOR = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PRD_QTD_ESTOQUE = table.Column<int>(type: "int", nullable: false),
                     PRD_ESTADO = table.Column<bool>(type: "bit", nullable: false),

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Infrastructure.Configuration
 {
@@ -28,7 +29,7 @@ namespace Infrastructure.Configuration
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(GetStringConnectionConfig());
+                optionsBuilder.UseSqlServer(GetStringConnectionConfig()).ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
                 base.OnConfiguring(optionsBuilder);
             }
         }
@@ -42,7 +43,7 @@ namespace Infrastructure.Configuration
 
         private string GetStringConnectionConfig()
         {
-            string strCon = "Server=localhost\\SQLEXPRESS;Database=Web_Ecommerce;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True";
+            string strCon = "Server=db;Database=Ecommerce;User Id=sa;Password=Ecommerce_Admin_2026#;TrustServerCertificate=True";
             return strCon;
         }
     }

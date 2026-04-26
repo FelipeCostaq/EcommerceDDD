@@ -23,12 +23,12 @@ namespace Entities.Entities
         [Column("PRD_DESCRICAO")]
         [Display(Name = "Descricão")]
         [MaxLength(150)]
-        public string Descricao { get; set; }
+        public string? Descricao { get; set; }
 
         [Column("PRD_OBSERVACAO")]
         [Display(Name = "Observacão")]
         [MaxLength(2000)]
-        public string Observacao { get; set; }
+        public string? Observacao { get; set; }
 
         [Column("PRD_VALOR")]
         [Display(Name = "Valor")]

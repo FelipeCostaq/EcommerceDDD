@@ -9,15 +9,23 @@ using Infrastructure.Configuration;
 using Infrastructure.Repository.Generics;
 using Infrastructure.Repository.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
-const string connectionStringName = "FelipeConnection";
+const string connectionStringName = "DockerConnection";
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString(connectionStringName) ?? throw new InvalidOperationException($"Connection string {connectionStringName} not found.");
+
 builder.Services.AddDbContext<ContextBase>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(connectionString,
+        sqlServerOptions => sqlServerOptions.EnableRetryOnFailure(
+            maxRetryCount: 10,
+            maxRetryDelay: TimeSpan.FromSeconds(10),
+            errorNumbersToAdd: null)
+    ).ConfigureWarnings(w => w.Ignore(RelationalEventId.PendingModelChangesWarning)));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -40,7 +48,6 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -59,20 +66,31 @@ app.MapControllerRoute(
 app.MapRazorPages()
    .WithStaticAssets();
 
+
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    try
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    int attempt = 10;
+
+    while (attempt > 0)
     {
-        var context = services.GetRequiredService<ContextBase>();
-        
-        context.Database.Migrate();
-        
-        Console.WriteLine("Banco de dados verificado/criado com sucesso!");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Erro ao inicializar banco: {ex.Message}");
+        try
+        {
+            logger.LogInformation("Tentando conectar ao banco de dados e aplicar migrations...");
+            var context = services.GetRequiredService<ContextBase>();
+            
+            context.Database.Migrate(); 
+            
+            logger.LogInformation("Banco de dados verificado/criado com sucesso!");
+            break; 
+        }
+        catch (Exception ex)
+        {
+            attempt--;
+            logger.LogWarning($"Banco ainda não está pronto. Faltam {attempt} tentativas. Aguardando 10 segundos... Erro: {ex.Message}");
+            System.Threading.Thread.Sleep(10000); 
+        }
     }
 }
 

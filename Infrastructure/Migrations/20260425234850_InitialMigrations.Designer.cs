@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ContextBase))]
-    [Migration("20260425194558_InitialMigrations")]
+    [Migration("20260425234850_InitialMigrations")]
     partial class InitialMigrations
     {
         /// <inheritdoc />
@@ -81,7 +81,6 @@ namespace Infrastructure.Migrations
                         .HasColumnName("PRD_DATA_CADASTRO");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)")
                         .HasColumnName("PRD_DESCRICAO");
@@ -97,7 +96,6 @@ namespace Infrastructure.Migrations
                         .HasColumnName("PRD_NOME");
 
                     b.Property<string>("Observacao")
-                        .IsRequired()
                         .HasMaxLength(2000)
                         .HasColumnType("nvarchar(2000)")
                         .HasColumnName("PRD_OBSERVACAO");
